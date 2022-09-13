@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\PermissionsForUserController;
+use App\Http\Controllers\UserHasPermissionsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +19,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::apiResource('/user', UserHasPermissionsController::class);
+
+Route::apiResource('/users/permission', PermissionsForUserController::class);
